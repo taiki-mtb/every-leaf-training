@@ -1,0 +1,11 @@
+<h1>Tasks#index</h1>
+<div>
+	<% @tasks.each do |task| %>
+		<%= task.name %>
+		<%= task.detail %>
+		<%= link_to t('link.detail'), task %>
+	<% end %>
+</div>
+<div>
+  <%= link_to t('link.new'), new_task_path %>
+</div>
