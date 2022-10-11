@@ -1,0 +1,13 @@
+<h1>Tasks#show</h1>
+<div>
+	<%= @task.name %>
+	<%= @task.detail %>
+</div>
+<div>
+  <%= link_to tasks_path do %>
+		<%= t('link.back') %>
+  <% end %>
+  <%= link_to edit_task_path(@task) do %>
+    <%= t('link.edit') %>
+  <% end %>
+</div>

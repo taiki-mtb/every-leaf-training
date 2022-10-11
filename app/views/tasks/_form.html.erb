@@ -1,0 +1,48 @@
+<% model_class = Task %>
+<%= form_with(model: task, local: true) do |f| %>
+  <section>
+    <% if task.errors.any? %>
+      <div>
+        <div>
+          <div>
+            <div>
+              <h4>Alert!</h4>
+              <b><%= pluralize(task.errors.count, "error") %></b>
+              <ul>
+                <% task.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div>
+      <div>
+        <h3><%= model_class.model_name.human %></h3>
+      </div>
+      <div>
+        <div>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+        <div>
+          <%= f.label :detail %>
+          <%= f.text_field :detail%>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <%= f.submit %>
+      <% if controller.action_name == "edit" %>
+        <%= link_to 'Delete', @task, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+      <% end %>   
+      <%= link_to [:tasks] do %>
+        <i class="fa fa-reply"></i>  <%= t('link.back') %>
+      <% end %>
+    </div>
+  </section>
+<% end %>
